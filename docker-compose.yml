@@ -1,0 +1,9 @@
+version: "3"
+services:
+  app:
+    # replace username/repo:tag with your name and image details
+    image: kferrone/php:v1
+    build: .
+    ports:
+      - "8080:80"
+      - "8043:443"

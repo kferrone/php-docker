@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ "$1" = "clean" ]
+then
+    close_and_clean
+elif [ "$1" = "run" ]
+then
+    run_php_docker
+elif [ "$1" = "build" ]
+then
+    build_php_docker
+else
+    echo "Not Cool Beans"
+fi
+
+build_php_docker() {
+	docker-compose build
+}
+
+run_php_docker() {
+	docker-compose up -d
+}
+
+close_and_clean() {
+	docker container kill phpdocker_app_1
+	docker rm -f phpdocker_app_1
+	docker rmi kferrone/php:v1
+}
